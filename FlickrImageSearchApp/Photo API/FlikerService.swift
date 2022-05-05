@@ -15,21 +15,19 @@ enum NetworkError: Error {
 protocol FlikerService {
     typealias Result = Swift.Result<[Photo], Error>
     
-    func getPhotos(completion: @escaping (Result) -> Void)
+    func getPhotos(url: URL, completion: @escaping (Result) -> Void)
 }
 
 final class RemotePhotoService: FlikerService {
     typealias Result = FlikerService.Result
     
-    private let url: URL
     private let client: HTTPClient
     
-    init(url: URL, client: HTTPClient) {
-        self.url = url
+    init(client: HTTPClient) {
         self.client = client
     }
     
-    func getPhotos(completion: @escaping (Result) -> Void) {
+    func getPhotos(url: URL, completion: @escaping (Result) -> Void) {
         client.getRquest(from: url) { result in
             switch result {
             case .success(let (data, response)):
