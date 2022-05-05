@@ -9,21 +9,21 @@ import Foundation
 import Combine
 
 final class PhotoCollectionViewCellViewModel {
-    private let imageURL: URL
+    private let photo: Photo
     private let imageService: ImageDataService
     
     @Published var data: Data? = nil
     @Published var isLoading: Bool = false
     @Published var error: String? = nil
     
-    init(imageURL: URL, imageService: ImageDataService) {
-        self.imageURL = imageURL
+    init(photo: Photo, imageService: ImageDataService) {
+        self.photo = photo
         self.imageService = imageService
     }
     
     func loadImage() {
         isLoading = true
-        imageService.loadImageData(from: imageURL, completion: handleAPIResult)
+        imageService.loadImageData(from: photo.url, completion: handleAPIResult)
     }
     
     private func handleAPIResult(_ result: Result<Data, Error>) {
