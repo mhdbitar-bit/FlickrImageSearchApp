@@ -111,6 +111,7 @@
 		4C7B0AF12823D34000C47E5F /* FlickrImageSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				4C7B0B302824038100C47E5F /* Domain */,
 				4C7B0B272823ED9200C47E5F /* Photo API */,
 				4C7B0B242823EC2C00C47E5F /* API Infrastructure */,
 				4C7B0AF22823D34000C47E5F /* AppDelegate.swift */,
@@ -120,7 +121,6 @@
 				4C7B0AFB2823D34100C47E5F /* Assets.xcassets */,
 				4C7B0AFD2823D34100C47E5F /* LaunchScreen.storyboard */,
 				4C7B0B002823D34100C47E5F /* Info.plist */,
-				4C7B0B222823EB0400C47E5F /* Photo.swift */,
 				4C7B0B2C2823F71C00C47E5F /* Constants.swift */,
 			);
 			path = FlickrImageSearchApp;
@@ -159,6 +159,14 @@
 				4C7B0B2E2823FFC700C47E5F /* FlickrEndpoint.swift */,
 			);
 			path = "Photo API";
+			sourceTree = "<group>";
+		};
+		4C7B0B302824038100C47E5F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4C7B0B222823EB0400C47E5F /* Photo.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
