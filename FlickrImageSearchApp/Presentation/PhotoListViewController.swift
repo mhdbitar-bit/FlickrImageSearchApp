@@ -8,15 +8,15 @@
 import UIKit
 import Combine
 
-final class FlickrCollectionViewController: UICollectionViewController {
+final class PhotoListViewController: UICollectionViewController {
     private var searchBarController: UISearchController!
-    private var viewModel: FlickrCollectionViewControllerViewModel!
+    private var viewModel: PhotoListViewModel!
     private var cancellables: Set<AnyCancellable> = []
     
     private let reuseIdentifier = "PhotoCollectionViewCell"
     private var numberOfColumns: CGFloat = 2
     
-    convenience init(viewModel: FlickrCollectionViewControllerViewModel) {
+    convenience init(viewModel: PhotoListViewModel) {
         self.init()
         self.viewModel = viewModel
     }
@@ -27,7 +27,16 @@ final class FlickrCollectionViewController: UICollectionViewController {
         setupUI()
     }
     
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupUI() {
+        title = viewModel.title
         createSearchBar()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
@@ -36,7 +45,7 @@ final class FlickrCollectionViewController: UICollectionViewController {
     }
 }
 
-extension FlickrCollectionViewController {
+extension PhotoListViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -56,7 +65,7 @@ extension FlickrCollectionViewController {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension FlickrCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.bounds.width)/numberOfColumns, height: (collectionView.bounds.width)/numberOfColumns)
@@ -69,7 +78,7 @@ extension FlickrCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: - UISearchController
-extension FlickrCollectionViewController: UISearchControllerDelegate, UISearchBarDelegate {
+extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelegate {
     
     private func createSearchBar() {
         searchBarController = UISearchController(searchResultsController: nil)

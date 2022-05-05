@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class FlickrCollectionViewControllerViewModel {
+final class PhotoListViewModel {
     var remoteService: RemotePhotoService
     var imageService: ImageDataService
     
