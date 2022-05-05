@@ -19,7 +19,7 @@ enum FlickrEndpoint {
             components.path = baseURL.path + "/services/rest"
             components.queryItems = [
                 URLQueryItem(name: "method", value: "flickr.photos.search"),
-                URLQueryItem(name: "api_key", value: Constants.api_key),
+                URLQueryItem(name: "api_key", value: Constants.apikey),
                 URLQueryItem(name: "format", value: "json"),
                 URLQueryItem(name: "nojsoncallback", value: "1"),
                 URLQueryItem(name: "safe_search", value: "1"),
