@@ -37,13 +37,9 @@ final class FlickrMapper {
         }
     }
     
-    enum Error: Swift.Error {
-        case invalidData
-    }
-    
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Photo] {
         guard response.statusCode == 200, let result = try? JSONDecoder().decode(FlickrResponse.self, from: data) else {
-            throw Error.invalidData
+            throw NetworkError.invalidData
         }
         
         return result.photos
