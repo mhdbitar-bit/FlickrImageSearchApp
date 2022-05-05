@@ -13,6 +13,4 @@ class Constants: NSObject {
     static let perPage = 60
     static let baseURL = "https://api.flickr.com"
     static let imageURL = "http://farm%d.static.flickr.com/%@/%@_%@.jpg"
-        
-    static let defaultColumnCount: Int = 2
 }
