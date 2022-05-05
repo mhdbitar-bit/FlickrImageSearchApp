@@ -13,13 +13,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var photo: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    private var viewModel: PhotoCollectionViewCellViewModel!
+    var viewModel: PhotoCollectionViewCellViewModel!
     private var cancellables: Set<AnyCancellable> = []
-    
-    convenience init(viewModel: PhotoCollectionViewCellViewModel) {
-        self.init()
-        self.viewModel = viewModel
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
