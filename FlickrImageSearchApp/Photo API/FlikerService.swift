@@ -29,11 +29,6 @@ final class RemotePhotoService: FlikerService {
         self.client = client
     }
     
-    enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
     func getPhotos(completion: @escaping (Result) -> Void) {
         client.getRquest(from: url) { result in
             switch result {
