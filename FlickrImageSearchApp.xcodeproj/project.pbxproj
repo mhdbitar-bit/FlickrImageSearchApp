@@ -33,6 +33,7 @@
 		4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DA28257DCB006F340F /* ManagedSearch.swift */; };
 		4C95F6DE28257FA4006F340F /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */; };
 		4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */; };
+		4C95F6E328258292006F340F /* SearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E228258292006F340F /* SearchStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		4C95F6DA28257DCB006F340F /* ManagedSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSearch.swift; sourceTree = "<group>"; };
 		4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchStore.swift; sourceTree = "<group>"; };
+		4C95F6E228258292006F340F /* SearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +135,7 @@
 		4C7B0AF12823D34000C47E5F /* FlickrImageSearchApp */ = {
 			isa = PBXGroup;
 			children = (
-				4C95F6D628257CF1006F340F /* Cache Infrastructure */,
+				4C95F6D628257CF1006F340F /* Search Cache */,
 				4C7B0B242823EC2C00C47E5F /* API Infrastructure */,
 				4C7B0B302824038100C47E5F /* Domain */,
 				4C7B0B272823ED9200C47E5F /* Photo API */,
@@ -239,12 +241,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		4C95F6D628257CF1006F340F /* Cache Infrastructure */ = {
+		4C95F6D628257CF1006F340F /* Search Cache */ = {
 			isa = PBXGroup;
 			children = (
-				4C95F6DC28257F76006F340F /* CoreData */,
+				4C95F6E128258283006F340F /* Infrastructure */,
+				4C95F6E228258292006F340F /* SearchStore.swift */,
 			);
-			path = "Cache Infrastructure";
+			path = "Search Cache";
 			sourceTree = "<group>";
 		};
 		4C95F6DC28257F76006F340F /* CoreData */ = {
@@ -256,6 +259,14 @@
 				4C95F6DA28257DCB006F340F /* ManagedSearch.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4C95F6E128258283006F340F /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6DC28257F76006F340F /* CoreData */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +420,7 @@
 				4C7B0AF52823D34000C47E5F /* SceneDelegate.swift in Sources */,
 				4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */,
 				4C7B0B2D2823F71C00C47E5F /* Constants.swift in Sources */,
+				4C95F6E328258292006F340F /* SearchStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
