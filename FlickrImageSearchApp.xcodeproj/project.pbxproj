@@ -36,6 +36,9 @@
 		4C95F6E328258292006F340F /* SearchKeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E228258292006F340F /* SearchKeywoardStore.swift */; };
 		4C95F6E5282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */; };
 		4C95F6E728258583006F340F /* SearchKeywordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E628258583006F340F /* SearchKeywordService.swift */; };
+		4C95F6EF28259D6A006F340F /* SearchKeywordListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6ED28259D6A006F340F /* SearchKeywordListTableViewController.swift */; };
+		4C95F6F228259DBC006F340F /* SearchKeywordListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6F128259DBC006F340F /* SearchKeywordListTableViewModel.swift */; };
+		4C95F6F628259F48006F340F /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6F528259F48006F340F /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		4C95F6E228258292006F340F /* SearchKeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywoardStore.swift; sourceTree = "<group>"; };
 		4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataSearchStore+KeywoardStore.swift"; sourceTree = "<group>"; };
 		4C95F6E628258583006F340F /* SearchKeywordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordService.swift; sourceTree = "<group>"; };
+		4C95F6ED28259D6A006F340F /* SearchKeywordListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordListTableViewController.swift; sourceTree = "<group>"; };
+		4C95F6F128259DBC006F340F /* SearchKeywordListTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordListTableViewModel.swift; sourceTree = "<group>"; };
+		4C95F6F528259F48006F340F /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,26 +208,27 @@
 		4C7B0B312824059100C47E5F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F6F428259F37006F340F /* Protocols */,
+				4C95F6EA28258A5A006F340F /* Keywords Scene */,
 				4C7B0B46282451FB00C47E5F /* Extensions */,
-				4C7B0B3C28240C7F00C47E5F /* ViewModels */,
-				4C7B0B32282408EC00C47E5F /* PhotoListViewController.swift */,
-				4C7B0B45282451F500C47E5F /* Views */,
+				4C95F6E928258A4C006F340F /* Photo Search Scene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		4C7B0B3C28240C7F00C47E5F /* ViewModels */ = {
+		4C7B0B3C28240C7F00C47E5F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				4C7B0B3F2824113B00C47E5F /* PhotoListViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4C7B0B45282451F500C47E5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4C95F6D1282552A9006F340F /* Utils */,
+				4C7B0B32282408EC00C47E5F /* PhotoListViewController.swift */,
 				4C7B0B362824097600C47E5F /* PhotoCollectionViewCell.swift */,
 				4C7B0B372824097600C47E5F /* PhotoCollectionViewCell.xib */,
 			);
@@ -273,6 +280,48 @@
 				4C95F6DC28257F76006F340F /* CoreData */,
 			);
 			path = "Cache Infrastructure";
+			sourceTree = "<group>";
+		};
+		4C95F6E928258A4C006F340F /* Photo Search Scene */ = {
+			isa = PBXGroup;
+			children = (
+				4C7B0B3C28240C7F00C47E5F /* ViewModel */,
+				4C7B0B45282451F500C47E5F /* Views */,
+			);
+			path = "Photo Search Scene";
+			sourceTree = "<group>";
+		};
+		4C95F6EA28258A5A006F340F /* Keywords Scene */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6EC28258B54006F340F /* ViewModel */,
+				4C95F6EB28258B4A006F340F /* Views */,
+			);
+			path = "Keywords Scene";
+			sourceTree = "<group>";
+		};
+		4C95F6EB28258B4A006F340F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6ED28259D6A006F340F /* SearchKeywordListTableViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C95F6EC28258B54006F340F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6F128259DBC006F340F /* SearchKeywordListTableViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4C95F6F428259F37006F340F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6F528259F48006F340F /* Alertable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +458,7 @@
 				4C7B0B232823EB0400C47E5F /* Photo.swift in Sources */,
 				4C95F6D928257D46006F340F /* ImageSearchStore.xcdatamodeld in Sources */,
 				4C95F6E728258583006F340F /* SearchKeywordService.swift in Sources */,
+				4C95F6EF28259D6A006F340F /* SearchKeywordListTableViewController.swift in Sources */,
 				4C7B0B382824097600C47E5F /* PhotoCollectionViewCell.swift in Sources */,
 				4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */,
 				4C7B0B2B2823EEDE00C47E5F /* FlickrMapper.swift in Sources */,
@@ -420,8 +470,10 @@
 				4C7B0B3B28240A7B00C47E5F /* ImageDataService.swift in Sources */,
 				4C95F6D3282552FB006F340F /* ImageDownloadOperation.swift in Sources */,
 				4C7B0B482824523C00C47E5F /* UIImageView+Animations.swift in Sources */,
+				4C95F6F228259DBC006F340F /* SearchKeywordListTableViewModel.swift in Sources */,
 				4C7B0AF32823D34000C47E5F /* AppDelegate.swift in Sources */,
 				4C95F6D5282555A3006F340F /* Operations.swift in Sources */,
+				4C95F6F628259F48006F340F /* Alertable.swift in Sources */,
 				4C7B0B402824113B00C47E5F /* PhotoListViewModel.swift in Sources */,
 				4C95F6DE28257FA4006F340F /* CoreDataHelpers.swift in Sources */,
 				4C7B0B292823EDBB00C47E5F /* FlikerService.swift in Sources */,
