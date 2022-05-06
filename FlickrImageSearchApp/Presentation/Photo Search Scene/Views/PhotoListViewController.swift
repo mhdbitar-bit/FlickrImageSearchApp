@@ -138,6 +138,6 @@ extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelega
 
 extension PhotoListViewController: SearchKeywordListTableViewControllerDelgate {
     func didSelectKeyword(with keyword: String) {
-        // TODO
+        viewModel.loadPhotos(keyword: keyword)
     }
 }
