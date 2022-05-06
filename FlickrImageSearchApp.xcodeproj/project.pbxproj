@@ -35,6 +35,7 @@
 		4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */; };
 		4C95F6E328258292006F340F /* SearchKeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E228258292006F340F /* SearchKeywoardStore.swift */; };
 		4C95F6E5282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */; };
+		4C95F6E728258583006F340F /* SearchKeywordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E628258583006F340F /* SearchKeywordService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchStore.swift; sourceTree = "<group>"; };
 		4C95F6E228258292006F340F /* SearchKeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywoardStore.swift; sourceTree = "<group>"; };
 		4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataSearchStore+KeywoardStore.swift"; sourceTree = "<group>"; };
+		4C95F6E628258583006F340F /* SearchKeywordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		4C7B0AF12823D34000C47E5F /* FlickrImageSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F6E128258283006F340F /* Cache Infrastructure */,
 				4C95F6D628257CF1006F340F /* Search Cache */,
 				4C7B0B242823EC2C00C47E5F /* API Infrastructure */,
 				4C7B0B302824038100C47E5F /* Domain */,
@@ -246,8 +249,8 @@
 		4C95F6D628257CF1006F340F /* Search Cache */ = {
 			isa = PBXGroup;
 			children = (
-				4C95F6E128258283006F340F /* Infrastructure */,
 				4C95F6E228258292006F340F /* SearchKeywoardStore.swift */,
+				4C95F6E628258583006F340F /* SearchKeywordService.swift */,
 			);
 			path = "Search Cache";
 			sourceTree = "<group>";
@@ -264,12 +267,12 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		4C95F6E128258283006F340F /* Infrastructure */ = {
+		4C95F6E128258283006F340F /* Cache Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				4C95F6DC28257F76006F340F /* CoreData */,
 			);
-			path = Infrastructure;
+			path = "Cache Infrastructure";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +408,7 @@
 			files = (
 				4C7B0B232823EB0400C47E5F /* Photo.swift in Sources */,
 				4C95F6D928257D46006F340F /* ImageSearchStore.xcdatamodeld in Sources */,
+				4C95F6E728258583006F340F /* SearchKeywordService.swift in Sources */,
 				4C7B0B382824097600C47E5F /* PhotoCollectionViewCell.swift in Sources */,
 				4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */,
 				4C7B0B2B2823EEDE00C47E5F /* FlickrMapper.swift in Sources */,
