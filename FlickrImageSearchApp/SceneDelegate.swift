@@ -29,9 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = URLSessionHTTPClient(session: .shared)
         let remoteService = RemotePhotoService(client: client)
         let imageService = RemoteImageDataService(client: client)
+        let photoOperation = Operations()
         let viewModel = PhotoListViewModel(
             remoteService: remoteService,
-            imageService: imageService)
+            imageService: imageService,
+            photoOperation: photoOperation)
         let vc = PhotoListViewController(viewModel: viewModel)
         return vc
     }

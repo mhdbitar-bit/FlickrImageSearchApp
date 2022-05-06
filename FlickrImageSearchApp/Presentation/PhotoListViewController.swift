@@ -25,6 +25,7 @@ final class PhotoListViewController: UICollectionViewController {
         super.viewDidLoad()
         
         setupUI()
+        bind()
     }
     
     init() {
@@ -41,9 +42,34 @@ final class PhotoListViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     }
 }
+
+// MARK: - Binding
+
+extension PhotoListViewController {
+    
+    private func bind() {
+        viewModel.$isLoading.sink { isLoading in
+            if isLoading {
+                
+            } else {
+                
+            }
+        }.store(in: &cancellables)
+    
+        viewModel.$photos.sink { [weak self] photos in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }.store(in: &cancellables)
+    }
+}
+
+
+// MARK: - UICollectionView Configurations
 
 extension PhotoListViewController {
     
@@ -51,20 +77,20 @@ extension PhotoListViewController {
         return 1
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.photos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
-        cell.viewModel = PhotoCollectionViewCellViewModel(photo: viewModel.photos[indexPath.row], imageService: viewModel.imageService)
+        cell.configure(with: viewModel.photos[indexPath.row], imageService: viewModel.imageService, operation: viewModel.photoOperation)
         return cell
     }
     
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -78,6 +104,7 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: - UISearchController
+
 extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelegate {
     
     private func createSearchBar() {

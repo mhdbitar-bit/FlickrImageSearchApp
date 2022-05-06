@@ -11,15 +11,17 @@ import Combine
 final class PhotoListViewModel {
     var remoteService: RemotePhotoService
     var imageService: ImageDataService
+    var photoOperation: Operations
     
     let title = "Photos"
     @Published var photos: [Photo] = []
     @Published var isLoading: Bool = false
     @Published var error: String? = nil
     
-    init(remoteService: RemotePhotoService, imageService: ImageDataService) {
+    init(remoteService: RemotePhotoService, imageService: ImageDataService, photoOperation: Operations) {
         self.remoteService = remoteService
         self.imageService = imageService
+        self.photoOperation = photoOperation
     }
     
     func loadPhotos(keyword: String) {
