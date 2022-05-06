@@ -19,6 +19,7 @@ extension ManagedSearch {
         if let entityName = entity().name {
             let request = NSFetchRequest<ManagedSearch>(entityName: entityName)
             request.returnsObjectsAsFaults = false
+            request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: true)]
             return try context.fetch(request)
         }
         
