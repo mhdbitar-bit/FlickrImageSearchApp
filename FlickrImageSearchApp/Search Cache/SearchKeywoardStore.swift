@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SearchStore {
+protocol SearchKeywoardStore {
     typealias InsertionResult = Result<Void, Error>
     typealias RetrievalResult = Result<[String], Error>
 

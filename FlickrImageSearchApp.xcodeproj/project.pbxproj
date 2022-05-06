@@ -33,7 +33,8 @@
 		4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DA28257DCB006F340F /* ManagedSearch.swift */; };
 		4C95F6DE28257FA4006F340F /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */; };
 		4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */; };
-		4C95F6E328258292006F340F /* SearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E228258292006F340F /* SearchStore.swift */; };
+		4C95F6E328258292006F340F /* SearchKeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E228258292006F340F /* SearchKeywoardStore.swift */; };
+		4C95F6E5282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +85,8 @@
 		4C95F6DA28257DCB006F340F /* ManagedSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSearch.swift; sourceTree = "<group>"; };
 		4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchStore.swift; sourceTree = "<group>"; };
-		4C95F6E228258292006F340F /* SearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStore.swift; sourceTree = "<group>"; };
+		4C95F6E228258292006F340F /* SearchKeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywoardStore.swift; sourceTree = "<group>"; };
+		4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataSearchStore+KeywoardStore.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				4C95F6E128258283006F340F /* Infrastructure */,
-				4C95F6E228258292006F340F /* SearchStore.swift */,
+				4C95F6E228258292006F340F /* SearchKeywoardStore.swift */,
 			);
 			path = "Search Cache";
 			sourceTree = "<group>";
@@ -257,6 +259,7 @@
 				4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */,
 				4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */,
 				4C95F6DA28257DCB006F340F /* ManagedSearch.swift */,
+				4C95F6E4282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */,
 				4C7B0B2B2823EEDE00C47E5F /* FlickrMapper.swift in Sources */,
 				4C7B0B34282408EC00C47E5F /* PhotoListViewController.swift in Sources */,
+				4C95F6E5282583BA006F340F /* CoreDataSearchStore+KeywoardStore.swift in Sources */,
 				4C7B0B2F2823FFC700C47E5F /* FlickrEndpoint.swift in Sources */,
 				4C7B0B262823EC4700C47E5F /* URLSessionHTTPClient.swift in Sources */,
 				4C7B0B4A2824528700C47E5F /* UIView+Shimmering.swift in Sources */,
@@ -420,7 +424,7 @@
 				4C7B0AF52823D34000C47E5F /* SceneDelegate.swift in Sources */,
 				4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */,
 				4C7B0B2D2823F71C00C47E5F /* Constants.swift in Sources */,
-				4C95F6E328258292006F340F /* SearchStore.swift in Sources */,
+				4C95F6E328258292006F340F /* SearchKeywoardStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
