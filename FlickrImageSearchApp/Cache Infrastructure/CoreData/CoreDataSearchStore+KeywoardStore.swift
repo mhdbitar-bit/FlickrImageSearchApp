@@ -15,7 +15,7 @@ extension CoreDataSearchStore: SearchKeywoardStore {
                 let managedSearch = try ManagedSearch.newUniqueInstance(in: context)
                 managedSearch.id = UUID()
                 managedSearch.keyword = keyword
-                managedSearch.createdAt = Data()
+                managedSearch.createdAt = NSDate()
                 try context.save()
             })
         }

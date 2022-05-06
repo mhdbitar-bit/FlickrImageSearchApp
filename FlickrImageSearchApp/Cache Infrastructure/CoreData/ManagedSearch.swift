@@ -11,7 +11,7 @@ import CoreData
 class ManagedSearch: NSManagedObject {
     @NSManaged var id: UUID
     @NSManaged var keyword: String
-    @NSManaged var createdAt: Data
+    @NSManaged var createdAt: NSDate
 }
 
 extension ManagedSearch {
