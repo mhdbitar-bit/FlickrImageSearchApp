@@ -31,6 +31,8 @@
 		4C95F6D5282555A3006F340F /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6D4282555A3006F340F /* Operations.swift */; };
 		4C95F6D928257D46006F340F /* ImageSearchStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6D728257D46006F340F /* ImageSearchStore.xcdatamodeld */; };
 		4C95F6DB28257DCB006F340F /* ManagedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DA28257DCB006F340F /* ManagedSearch.swift */; };
+		4C95F6DE28257FA4006F340F /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */; };
+		4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		4C95F6D4282555A3006F340F /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		4C95F6D828257D46006F340F /* ImageSearchStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageSearchStore.xcdatamodel; sourceTree = "<group>"; };
 		4C95F6DA28257DCB006F340F /* ManagedSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSearch.swift; sourceTree = "<group>"; };
+		4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,10 +242,20 @@
 		4C95F6D628257CF1006F340F /* Cache Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				4C95F6D728257D46006F340F /* ImageSearchStore.xcdatamodeld */,
-				4C95F6DA28257DCB006F340F /* ManagedSearch.swift */,
+				4C95F6DC28257F76006F340F /* CoreData */,
 			);
 			path = "Cache Infrastructure";
+			sourceTree = "<group>";
+		};
+		4C95F6DC28257F76006F340F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F6D728257D46006F340F /* ImageSearchStore.xcdatamodeld */,
+				4C95F6DD28257FA4006F340F /* CoreDataHelpers.swift */,
+				4C95F6DF282580E1006F340F /* CoreDataSearchStore.swift */,
+				4C95F6DA28257DCB006F340F /* ManagedSearch.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,8 +404,10 @@
 				4C7B0AF32823D34000C47E5F /* AppDelegate.swift in Sources */,
 				4C95F6D5282555A3006F340F /* Operations.swift in Sources */,
 				4C7B0B402824113B00C47E5F /* PhotoListViewModel.swift in Sources */,
+				4C95F6DE28257FA4006F340F /* CoreDataHelpers.swift in Sources */,
 				4C7B0B292823EDBB00C47E5F /* FlikerService.swift in Sources */,
 				4C7B0AF52823D34000C47E5F /* SceneDelegate.swift in Sources */,
+				4C95F6E0282580E1006F340F /* CoreDataSearchStore.swift in Sources */,
 				4C7B0B2D2823F71C00C47E5F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
