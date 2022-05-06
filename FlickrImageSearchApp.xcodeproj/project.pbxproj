@@ -125,7 +125,6 @@
 		4C7B0AF12823D34000C47E5F /* FlickrImageSearchApp */ = {
 			isa = PBXGroup;
 			children = (
-				4C95F6D1282552A9006F340F /* Utils */,
 				4C7B0B242823EC2C00C47E5F /* API Infrastructure */,
 				4C7B0B302824038100C47E5F /* Domain */,
 				4C7B0B272823ED9200C47E5F /* Photo API */,
@@ -206,6 +205,7 @@
 		4C7B0B45282451F500C47E5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F6D1282552A9006F340F /* Utils */,
 				4C7B0B362824097600C47E5F /* PhotoCollectionViewCell.swift */,
 				4C7B0B372824097600C47E5F /* PhotoCollectionViewCell.xib */,
 			);
