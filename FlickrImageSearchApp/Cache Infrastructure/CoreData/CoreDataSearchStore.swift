@@ -25,6 +25,7 @@ final class CoreDataSearchStore {
         do {
             container = try NSPersistentContainer.load(name: CoreDataSearchStore.modelName, model: model, url: storeURL)
             context = container.newBackgroundContext()
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         } catch {
             throw StoreError.failedToLoadPersistentContainer(error)
         }
