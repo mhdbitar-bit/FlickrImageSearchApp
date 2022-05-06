@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -29,10 +30,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = URLSessionHTTPClient(session: .shared)
         let remoteService = RemotePhotoService(client: client)
         let imageService = RemoteImageDataService(client: client)
+        
+        let localStoreURL = NSPersistentContainer
+            .defaultDirectoryURL()
+            .appendingPathComponent("image-search-store.sqlite")
+        
+        let localStore = try! CoreDataSearchStore(storeURL: localStoreURL)
+        let keywordsService = SearchKeywordService(store: localStore)
+        
         let photoOperation = Operations()
         let viewModel = PhotoListViewModel(
             remoteService: remoteService,
             imageService: imageService,
+            searchKeywordService: keywordsService,
             photoOperation: photoOperation)
         let vc = PhotoListViewController(viewModel: viewModel)
         return vc

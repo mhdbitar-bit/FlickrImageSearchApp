@@ -42,7 +42,16 @@ final class PhotoListViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openKeywordsList))
+
         collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    @objc func openKeywordsList() {
+        let viewModel = SearchKeywordListTableViewModel(service: viewModel.searchKeywordService)
+        let viewController = SearchKeywordListTableViewController(viewModel: viewModel)
+        viewController.delegate = self
+        show(viewController, sender: self)
     }
 }
 
@@ -124,5 +133,11 @@ extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelega
         collectionView.reloadData()
         viewModel.loadPhotos(keyword: text)
         searchBarController.searchBar.resignFirstResponder()
+    }
+}
+
+extension PhotoListViewController: SearchKeywordListTableViewControllerDelgate {
+    func didSelectKeyword(with keyword: String) {
+        // TODO
     }
 }
