@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class PhotoListViewController: UICollectionViewController {
+final class PhotoListViewController: UICollectionViewController, Alertable {
     private var searchBarController: UISearchController!
     private var viewModel: PhotoListViewModel!
     private var cancellables: Set<AnyCancellable> = []
@@ -58,20 +58,36 @@ final class PhotoListViewController: UICollectionViewController {
 // MARK: - Binding
 
 extension PhotoListViewController {
-    
     private func bind() {
+        bindLoader()
+        bindPhotos()
+        bindError()
+    }
+    
+    private func bindError() {
+        viewModel.$error.sink { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.showAlert(message: error)
+            }
+        }.store(in: &cancellables)
+    }
+    
+    private func bindPhotos() {
+        viewModel.$photos.sink { [weak self] photos in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }.store(in: &cancellables)
+    }
+    
+    private func bindLoader() {
         viewModel.$isLoading.sink { isLoading in
             if isLoading {
                 
             } else {
                 
-            }
-        }.store(in: &cancellables)
-    
-        viewModel.$photos.sink { [weak self] photos in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
             }
         }.store(in: &cancellables)
     }
