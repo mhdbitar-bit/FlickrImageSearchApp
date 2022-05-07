@@ -20,4 +20,18 @@ final class SceneDelegateTests: XCTestCase {
         
         XCTAssertEqual(window.makeKeyAndVisibleCallCount, 1)
     }
+    
+    func test_configureWindow_configuresRootViewController() {
+        let sut = SceneDelegate()
+        sut.window = UIWindowSpy()
+        
+        sut.configureWindow()
+        
+        let root = sut.window?.rootViewController
+        let rootNavigation = root as? UINavigationController
+        let topController = rootNavigation?.topViewController
+        
+        XCTAssertNotNil(rootNavigation, "Expected a navigation controller as root, got \(String(describing: root)) instead")
+        XCTAssertTrue(topController is PhotoListViewController, "Expected a photos controller as top view controller, got \(String(describing: topController)) instead")
+    }
 }
