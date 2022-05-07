@@ -20,13 +20,3 @@ final class FlickrMapperTests: XCTestCase {
     }
     
 }
-
-extension HTTPURLResponse {
-    convenience init(statusCode: Int) {
-        self.init(
-            url: URL(string: "any-url.com")!,
-            statusCode: statusCode,
-            httpVersion: nil,
-            headerFields: nil)!
-    }
-}
