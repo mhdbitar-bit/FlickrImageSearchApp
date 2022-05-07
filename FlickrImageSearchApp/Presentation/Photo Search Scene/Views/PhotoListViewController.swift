@@ -13,8 +13,9 @@ final class PhotoListViewController: UICollectionViewController, Alertable {
     private var viewModel: PhotoListViewModel!
     private var cancellables: Set<AnyCancellable> = []
     
-    private let reuseIdentifier = "PhotoCollectionViewCell"
+    private let photoReuseIdentifier = "PhotoCollectionViewCell"
     private var numberOfColumns: CGFloat = 2
+    private let refreshControl = UIRefreshControl()
     
     convenience init(viewModel: PhotoListViewModel) {
         self.init()
@@ -44,7 +45,11 @@ final class PhotoListViewController: UICollectionViewController, Alertable {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openKeywordsList))
 
-        collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.alwaysBounceVertical = true
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+
+        collectionView.register(UINib(nibName: photoReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: photoReuseIdentifier)
     }
     
     @objc func openKeywordsList() {
@@ -52,6 +57,10 @@ final class PhotoListViewController: UICollectionViewController, Alertable {
         let viewController = SearchKeywordListTableViewController(viewModel: viewModel)
         viewController.delegate = self
         show(viewController, sender: self)
+    }
+    
+    @objc func refresh() {
+        viewModel.loadNextPage()
     }
 }
 
@@ -83,11 +92,14 @@ extension PhotoListViewController {
     }
     
     private func bindLoader() {
-        viewModel.$isLoading.sink { isLoading in
-            if isLoading {
-                
-            } else {
-                
+        viewModel.$isLoading.sink { [weak self] isLoading in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if isLoading {
+                    self.refreshControl.beginRefreshing()
+                } else {
+                    self.refreshControl.endRefreshing()
+                }
             }
         }.store(in: &cancellables)
     }
@@ -107,9 +119,8 @@ extension PhotoListViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photoReuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
         cell.photo.image = nil
-        
         return cell
     }
     

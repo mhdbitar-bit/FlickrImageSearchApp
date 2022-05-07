@@ -65,7 +65,10 @@ final class PhotoListViewModel {
     func loadNextPage() {
         if pageNo < totalPageNo {
             pageNo += 1
-            loadPhotos()
+        } else {
+            pageNo = 1
         }
+        
+        loadPhotos()
     }
 }
