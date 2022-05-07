@@ -40,19 +40,24 @@ final class PhotoListViewController: UICollectionViewController, Alertable {
     private func setupUI() {
         title = viewModel.title
         createSearchBar()
+        setupNavigationController()
+        setupCollectionView()
+    }
+    
+    private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openKeywordsList))
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openKeywordsListPage))
+    }
+    
+    private func setupCollectionView() {
         collectionView.alwaysBounceVertical = true
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         collectionView.addSubview(refreshControl)
-
         collectionView.register(UINib(nibName: photoReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: photoReuseIdentifier)
     }
     
-    @objc func openKeywordsList() {
+    @objc func openKeywordsListPage() {
         let viewModel = SearchKeywordListTableViewModel(service: viewModel.searchKeywordService)
         let viewController = SearchKeywordListTableViewController(viewModel: viewModel)
         viewController.delegate = self
