@@ -65,7 +65,11 @@ final class PhotoListViewController: UICollectionViewController, Alertable {
     }
     
     @objc func refresh() {
-        viewModel.loadNextPage()
+        if collectionView.numberOfItems(inSection: 0) > 0 {
+            viewModel.loadNextPage()
+        } else {
+            refreshControl.endRefreshing()
+        }
     }
 }
 
