@@ -20,13 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         configureWindow()
     }
     
-    private func configureWindow() {
+    func configureWindow() {
         navigationController.setViewControllers([makeRootViewController()], animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     
-    private func makeRootViewController() -> PhotoListViewController {
+    func makeRootViewController() -> PhotoListViewController {
         let client = URLSessionHTTPClient(session: .shared)
         let remoteService = RemotePhotoService(client: client)
         let imageService = RemoteImageDataService(client: client)
