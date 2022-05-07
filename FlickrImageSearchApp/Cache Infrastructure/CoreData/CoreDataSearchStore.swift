@@ -39,7 +39,8 @@ final class CoreDataSearchStore {
     }
     
     private func cleanUpReferencesToPersistentStores() {
-        context.perform {
+        context.perform { [weak self] in
+            guard let self = self else { return }
             let coordinator = self.container.persistentStoreCoordinator
             try? coordinator.persistentStores.forEach(coordinator.remove)
         }
