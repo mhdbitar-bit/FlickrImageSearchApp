@@ -7,8 +7,8 @@
 
 import Foundation
 
-func anyURL() -> URL {
-    return URL(string: "https://any-url.com")!
+func anyURL(path: String = "") -> URL {
+    return URL(string: !path.isEmpty ? path : "https://any-url.com")!
 }
 
 extension HTTPURLResponse {
