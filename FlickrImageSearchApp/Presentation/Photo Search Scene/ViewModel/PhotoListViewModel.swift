@@ -41,11 +41,7 @@ final class PhotoListViewModel {
     private func loadPhotos() {
         isLoading = true
         if let url = URL(string: Constants.baseURL) {
-            let endpoint = FlickrEndpoint.searchPhotos.url(
-                baseURL: url,
-                keyword: serachKeyword,
-                perPage: Constants.perPage, page: pageNo
-            )
+            let endpoint = FlickrEndpoint.searchPhotos(searchTerm: serachKeyword, page: pageNo).url(baseURL: url)
             remoteService.getPhotos(url: endpoint) { [weak self] result in
                 guard let self = self else { return }
                 self.isLoading = false
