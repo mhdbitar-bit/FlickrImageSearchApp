@@ -14,6 +14,10 @@ final class PhotoListViewModel {
     var searchKeywordService: SearchKeywordService
     var photoOperation: Operations
     
+    private var serachKeyword = ""
+    private var pageNo = 1
+    private var totalPageNo = 1
+    
     let title = "Photos"
     @Published var photos: [Photo] = []
     @Published var isLoading: Bool = false
@@ -27,21 +31,41 @@ final class PhotoListViewModel {
     }
     
     func searchPhotos(by keyword: String) {
+        serachKeyword = keyword
+        photos = []
+        pageNo = 1
+        totalPageNo = 1
+        loadPhotos()
+    }
+    
+    private func loadPhotos() {
         isLoading = true
         if let url = URL(string: Constants.baseURL) {
-            let endpoint = FlickrEndpoint.searchPhotos.url(baseURL: url, keyword: keyword, perPage: Constants.perPage, page: 1)
+            let endpoint = FlickrEndpoint.searchPhotos.url(
+                baseURL: url,
+                keyword: serachKeyword,
+                perPage: Constants.perPage, page: pageNo
+            )
             remoteService.getPhotos(url: endpoint) { [weak self] result in
                 guard let self = self else { return }
                 self.isLoading = false
                 switch result {
                 case let .success(flickr):
-                    self.searchKeywordService.insert(keyword) { _ in }
-                    self.photos = flickr.photos
+                    self.searchKeywordService.insert(self.serachKeyword) { _ in }
+                    self.photos.append(contentsOf: flickr.photos)
+                    self.totalPageNo = flickr.pages
                     
                 case let .failure(error):
                     self.error = error.localizedDescription
                 }
             }
+        }
+    }
+    
+    func loadNextPage() {
+        if pageNo < totalPageNo {
+            pageNo += 1
+            loadPhotos()
         }
     }
 }

@@ -75,10 +75,6 @@ extension PhotoListViewController {
             }
         }.store(in: &cancellables)
     }
-    
-    private func loadNextFeed() {
-        
-    }
 }
 
 
@@ -107,10 +103,9 @@ extension PhotoListViewController {
         cell.configure(with: viewModel.photos[indexPath.row], imageService: viewModel.imageService, operation: viewModel.photoOperation)
         
         if indexPath.row == viewModel.photos.count - 10 {
-            loadNextFeed()
+            viewModel.loadNextPage()
         }
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
