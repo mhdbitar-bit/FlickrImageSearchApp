@@ -9,11 +9,11 @@ final class FlickrEndpointTests: XCTestCase {
         let searchTerm = "any"
         let perPage = Constants.perPage
         let page = 1
-        let received = FlickrEndpoint.searchPhotos.url(baseURL: baseURL, keyword: searchTerm, perPage: perPage, page: page)
+        let received = FlickrEndpoint.searchPhotos(searchTerm: searchTerm, page: page).url(baseURL: baseURL)
         
         XCTAssertEqual(received.scheme, "https", "scheme")
         XCTAssertEqual(received.host, "any-url.com", "host")
         XCTAssertEqual(received.path, "/services/rest", "path")
         XCTAssertEqual(received.query, "method=flickr.photos.search&api_key=\(key)&format=json&nojsoncallback=1&safe_search=1&per_page=\(perPage)&text=\(searchTerm)&page=\(page)", "query")
-    }
+    }    
 }
