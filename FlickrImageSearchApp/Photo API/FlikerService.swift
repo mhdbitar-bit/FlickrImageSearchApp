@@ -13,7 +13,7 @@ enum NetworkError: Error {
 }
 
 protocol FlikerService {
-    typealias Result = Swift.Result<[Photo], Error>
+    typealias Result = Swift.Result<Flickr, Error>
     
     func getPhotos(url: URL, completion: @escaping (Result) -> Void)
 }
@@ -40,8 +40,8 @@ final class RemotePhotoService: FlikerService {
     
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
-            let photos = try FlickrMapper.map(data, from: response)
-            return .success(photos)
+            let flickr = try FlickrMapper.map(data, from: response)
+            return .success(flickr)
         } catch {
             return .failure(error)
         }
