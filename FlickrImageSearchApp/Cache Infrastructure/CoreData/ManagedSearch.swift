@@ -26,6 +26,18 @@ extension ManagedSearch {
         return []
     }
     
+    static func find(where keyword: String, in context: NSManagedObjectContext) throws -> ManagedSearch? {
+        if let entityName = entity().name {
+            let request = NSFetchRequest<ManagedSearch>(entityName: entityName)
+            request.returnsObjectsAsFaults = false
+            request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedSearch.keyword), keyword])
+            request.fetchLimit = 1
+            return try context.fetch(request).first
+        }
+        
+        return .none
+    }
+    
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedSearch {
         return ManagedSearch(context: context)
     }

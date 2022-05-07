@@ -30,4 +30,12 @@ extension CoreDataSearchStore: SearchKeywoardStore {
             })
         }
     }
+    
+    func delete(where keyword: String, completion: @escaping (DeletionResult) -> Void) {
+        perform { context in
+            completion(Result {
+                try ManagedSearch.find(where: keyword, in: context).map(context.delete).map(context.save)
+            })
+        }
+    }
 }

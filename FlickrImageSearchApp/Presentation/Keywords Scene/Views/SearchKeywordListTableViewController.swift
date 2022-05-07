@@ -83,4 +83,15 @@ final class SearchKeywordListTableViewController: UITableViewController, Alertab
         guard let delegate = delegate else { return }
         delegate.didSelectKeyword(with: viewModel.keywords[indexPath.row])
     }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.viewModel.deleteKeyword(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }

@@ -20,12 +20,28 @@ final class SearchKeywordListTableViewModel {
     }
     
     func load() {
-        service.retrieve { result in
+        service.retrieve { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let keywords):
                 self.keywords = keywords
             case .failure(let error):
                 self.error = error.localizedDescription
+            }
+        }
+    }
+    
+    func deleteKeyword(at index: Int) {
+        if !keywords.isEmpty {
+            let keyword = keywords[index]
+            keywords.remove(at: index)
+            service.delete(where: keyword) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .failure(let error):
+                    self.error = error.localizedDescription
+                default: break
+                }
             }
         }
     }

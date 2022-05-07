@@ -36,5 +36,16 @@ extension SearchKeywordService: SearchKeywoardStore {
             }
         }
     }
+    
+    func delete(where keyword: String, completion: @escaping (DeletionResult) -> Void) {
+        store.delete(where: keyword) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
