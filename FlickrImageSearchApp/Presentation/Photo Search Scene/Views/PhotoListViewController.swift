@@ -75,6 +75,10 @@ extension PhotoListViewController {
             }
         }.store(in: &cancellables)
     }
+    
+    private func loadNextFeed() {
+        
+    }
 }
 
 
@@ -92,8 +96,19 @@ extension PhotoListViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
-        cell.configure(with: viewModel.photos[indexPath.row], imageService: viewModel.imageService, operation: viewModel.photoOperation)
+        cell.photo.image = nil
+        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? PhotoCollectionViewCell else { return }
+        
+        cell.configure(with: viewModel.photos[indexPath.row], imageService: viewModel.imageService, operation: viewModel.photoOperation)
+        
+        if indexPath.row == viewModel.photos.count - 10 {
+            loadNextFeed()
+        }
     }
     
 }
@@ -131,7 +146,7 @@ extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelega
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, text.count > 1 else { return }
         collectionView.reloadData()
-        viewModel.loadPhotos(keyword: text)
+        viewModel.searchPhotos(by: text)
         searchBarController.searchBar.resignFirstResponder()
     }
 }
@@ -139,6 +154,6 @@ extension PhotoListViewController: UISearchControllerDelegate, UISearchBarDelega
 extension PhotoListViewController: SearchKeywordListTableViewControllerDelgate {
     func didSelectKeyword(with keyword: String) {
         navigationController?.popViewController(animated: true)
-        viewModel.loadPhotos(keyword: keyword)
+        viewModel.searchPhotos(by: keyword)
     }
 }

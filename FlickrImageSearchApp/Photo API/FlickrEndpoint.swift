@@ -8,11 +8,11 @@
 import Foundation
 
 enum FlickrEndpoint {
-    case getPhotos
+    case searchPhotos
     
     func url(baseURL: URL, keyword: String, perPage: Int, page: Int) -> URL {
         switch self {
-        case .getPhotos:
+        case .searchPhotos:
             var components = URLComponents()
             components.scheme = baseURL.scheme
             components.host = baseURL.host

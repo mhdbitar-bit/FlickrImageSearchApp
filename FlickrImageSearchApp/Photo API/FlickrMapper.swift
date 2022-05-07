@@ -11,6 +11,15 @@ final class FlickrMapper {
     private struct FlickrResponse: Decodable {
         let photos: FlickerPhotoResponse
         
+        var flickr: Flickr {
+            return Flickr(
+                page: photos.page,
+                pages: photos.pages,
+                perpage: photos.perpage,
+                total: photos.total,
+                photos: photos.items)
+        }
+        
         struct FlickerPhotoResponse: Decodable {
             let page: Int
             let pages: Int
@@ -41,11 +50,11 @@ final class FlickrMapper {
         }
     }
     
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Photo] {
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> Flickr {
         guard response.statusCode == 200, let result = try? JSONDecoder().decode(FlickrResponse.self, from: data) else {
             throw NetworkError.invalidData
         }
         
-        return result.photos.items
+        return result.flickr
     }
 }

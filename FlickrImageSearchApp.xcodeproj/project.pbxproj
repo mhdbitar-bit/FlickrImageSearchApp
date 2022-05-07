@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3A734D2826564D0097BDC9 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A734C2826564D0097BDC9 /* Flickr.swift */; };
 		4C7B0AF32823D34000C47E5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0AF22823D34000C47E5F /* AppDelegate.swift */; };
 		4C7B0AF52823D34000C47E5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0AF42823D34000C47E5F /* SceneDelegate.swift */; };
 		4C7B0AFC2823D34100C47E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0AFB2823D34100C47E5F /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C3A734C2826564D0097BDC9 /* Flickr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		4C7B0AEF2823D34000C47E5F /* FlickrImageSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7B0AF22823D34000C47E5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C7B0AF42823D34000C47E5F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				4C7B0B222823EB0400C47E5F /* Photo.swift */,
+				4C3A734C2826564D0097BDC9 /* Flickr.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C7B0B232823EB0400C47E5F /* Photo.swift in Sources */,
+				4C3A734D2826564D0097BDC9 /* Flickr.swift in Sources */,
 				4C95F6D928257D46006F340F /* ImageSearchStore.xcdatamodeld in Sources */,
 				4C95F6E728258583006F340F /* SearchKeywordService.swift in Sources */,
 				4C95F6EF28259D6A006F340F /* SearchKeywordListTableViewController.swift in Sources */,

@@ -26,17 +26,17 @@ final class PhotoListViewModel {
         self.photoOperation = photoOperation
     }
     
-    func loadPhotos(keyword: String) {
+    func searchPhotos(by keyword: String) {
         isLoading = true
         if let url = URL(string: Constants.baseURL) {
-            let endpoint = FlickrEndpoint.getPhotos.url(baseURL: url, keyword: keyword, perPage: Constants.perPage, page: 1)
+            let endpoint = FlickrEndpoint.searchPhotos.url(baseURL: url, keyword: keyword, perPage: Constants.perPage, page: 1)
             remoteService.getPhotos(url: endpoint) { [weak self] result in
                 guard let self = self else { return }
                 self.isLoading = false
                 switch result {
-                case let .success(photos):
+                case let .success(flickr):
                     self.searchKeywordService.insert(keyword) { _ in }
-                    self.photos = photos
+                    self.photos = flickr.photos
                     
                 case let .failure(error):
                     self.error = error.localizedDescription
