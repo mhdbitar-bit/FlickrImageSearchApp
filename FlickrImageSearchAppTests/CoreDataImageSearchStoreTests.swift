@@ -11,12 +11,12 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
         let sut = makeSUT()
         let term = "any"
         
-        sut.insert(term) { [weak self] result in
+        sut.insert(term) { result in
             switch result {
-            case .success:
-                self?.expectToRetrieve(sut, expectedResult: [term])
             case .failure(let error):
-                XCTFail("Expected to insert term, got \(error) instead")
+                XCTAssertNil(error)
+            case .success:
+                break
             }
         }
     }
@@ -33,6 +33,7 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SearchKeywoardStore {
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataSearchStore(storeURL: storeURL)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     
