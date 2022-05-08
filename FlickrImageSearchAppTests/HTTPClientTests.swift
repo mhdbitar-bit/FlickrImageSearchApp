@@ -73,6 +73,28 @@ final class HTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_failsOnRequestError() {
+        let exp = expectation(description: "Wait for request")
+        
+        URLProtocolStub.requestHandler = { _ in
+            return (nil, nil)
+        }
+        
+        makeSUT().getRquest(from: anyURL()) { result in
+            switch result {
+            case .success:
+                XCTFail("Success response was not expected.")
+                
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> HTTPClient {
