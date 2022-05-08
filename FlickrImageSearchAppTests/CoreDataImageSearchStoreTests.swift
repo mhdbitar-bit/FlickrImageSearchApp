@@ -23,14 +23,7 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
         let sut = makeSUT()
         let term = "any"
         expectToInsert(sut, with: term)
-        sut.delete(where: term) { result in
-            switch result {
-            case .failure(let error):
-                XCTAssertNil(error)
-            case .success:
-                break
-            }
-        }
+        expectToDelete(sut, with: term)
     }
     
     // MARK: - Helpers
@@ -55,6 +48,17 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
     
     private func expectToInsert(_ sut: SearchKeywoardStore, with term: String, file: StaticString = #filePath, line: UInt = #line) {
         sut.insert(term) { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertNil(error, file: file, line: line)
+            case .success:
+                break
+            }
+        }
+    }
+    
+    private func expectToDelete(_ sut: SearchKeywoardStore, with term: String, file: StaticString = #filePath, line: UInt = #line) {
+        sut.delete(where: term) { result in
             switch result {
             case .failure(let error):
                 XCTAssertNil(error, file: file, line: line)
