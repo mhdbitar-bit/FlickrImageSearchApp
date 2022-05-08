@@ -10,6 +10,14 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
     func test_insert_searchTerm() {
         expectToInsert(makeSUT(), with: "any")
     }
+
+    func test_retrieve_deliversValuesOnNonEmptyCache() {
+        let sut = makeSUT()
+        let terms = ["search tearm 1", "search term 2"]
+        expectToInsert(sut, with: terms[0])
+        expectToInsert(sut, with: terms[1])
+        expectToRetrieve(sut, expectedResult: terms)
+    }
     
     // MARK: - Helpers
     
