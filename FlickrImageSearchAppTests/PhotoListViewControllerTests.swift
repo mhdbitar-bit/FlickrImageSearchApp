@@ -4,21 +4,19 @@ import XCTest
 final class PhotoListViewControllerTests: XCTestCase {
     
     func test_canInit() {
-//        let sut = makeSUT()
-//        sut.loadViewIfNeeded()
-//        
-//        XCTAssertNotNil(sut.collectionView)
+        let sut = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut.collectionView)
     }
     
     // MARK: - Helpers
     
-    func makeSUT() -> PhotoListViewController {
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> PhotoListViewController {
         let client = URLSessionHTTPClient(session: .shared)
         let remoteService = RemotePhotoService(client: client)
         let imageService = RemoteImageDataService(client: client)
-        let localStoreURL = anyURL()
-        
-        let localStore = try! CoreDataSearchStore(storeURL: localStoreURL)
+        let storeURL = URL(fileURLWithPath: "/dev/null")
+        let localStore = try! CoreDataSearchStore(storeURL: storeURL)
         let keywordsService = SearchKeywordService(store: localStore)
         
         let photoOperation = Operations()
