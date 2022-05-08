@@ -17,6 +17,13 @@ final class PhotoListViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView.dataSource, "Expeted CollectionDataSrouce to be not nil")
     }
     
+    func test_viewDidLoad_initialState() {
+        let sut = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.collectionView.numberOfItems(inSection: 0), 0)
+    }
+    
     // MARK: - Helpers
     
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> PhotoListViewController {
