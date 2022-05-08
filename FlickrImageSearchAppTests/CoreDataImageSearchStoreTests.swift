@@ -19,6 +19,20 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
         expectToRetrieve(sut, expectedResult: terms)
     }
     
+    func test_delete_itemFromCache() {
+        let sut = makeSUT()
+        let term = "any"
+        expectToInsert(sut, with: term)
+        sut.delete(where: term) { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertNil(error)
+            case .success:
+                break
+            }
+        }
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SearchKeywoardStore {
