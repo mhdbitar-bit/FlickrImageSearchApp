@@ -156,7 +156,7 @@
 				4C95F6D628257CF1006F340F /* Search Cache */,
 				4C7B0B242823EC2C00C47E5F /* API Infrastructure */,
 				4C7B0B302824038100C47E5F /* Domain */,
-				4C7B0B272823ED9200C47E5F /* Photo API */,
+				4C7B0B272823ED9200C47E5F /* Flickr API */,
 				4C7B0B312824059100C47E5F /* Presentation */,
 				4C7B0AF22823D34000C47E5F /* AppDelegate.swift */,
 				4C7B0AF42823D34000C47E5F /* SceneDelegate.swift */,
@@ -190,7 +190,7 @@
 			path = "API Infrastructure";
 			sourceTree = "<group>";
 		};
-		4C7B0B272823ED9200C47E5F /* Photo API */ = {
+		4C7B0B272823ED9200C47E5F /* Flickr API */ = {
 			isa = PBXGroup;
 			children = (
 				4C7B0B2A2823EEDE00C47E5F /* FlickrMapper.swift */,
@@ -198,7 +198,7 @@
 				4C7B0B282823EDBB00C47E5F /* FlikerService.swift */,
 				4C7B0B2E2823FFC700C47E5F /* FlickrEndpoint.swift */,
 			);
-			path = "Photo API";
+			path = "Flickr API";
 			sourceTree = "<group>";
 		};
 		4C7B0B302824038100C47E5F /* Domain */ = {
