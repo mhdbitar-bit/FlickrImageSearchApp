@@ -8,25 +8,8 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
     }
     
     func test_insert_searchTerm() {
-        let sut = makeSUT()
-        let term = "any"
-        
-        sut.insert(term) { result in
-            switch result {
-            case .failure(let error):
-                XCTAssertNil(error)
-            case .success:
-                break
-            }
-        }
+        expectToInsert(makeSUT(), with: "any")
     }
-    
-//    func test_retrieve_deliversValuesOnNonEmptyCache() {
-//        let sut = makeSUT()
-//        let terms = ["search tearm 1", "search term 2"]
-//
-//        sut.insert(<#T##keyword: String##String#>, completion: <#T##(Result<Void, Error>) -> Void#>)
-//    }
     
     // MARK: - Helpers
     
@@ -44,6 +27,17 @@ final class CoreDataImageSearchStoreTests: XCTestCase {
                 XCTAssertEqual(values.count, expectedResult.count)
             case .failure(let error):
                 XCTFail("Expected to retrieve empty terms, got \(error) instead", file: file, line: line)
+            }
+        }
+    }
+    
+    private func expectToInsert(_ sut: SearchKeywoardStore, with term: String, file: StaticString = #filePath, line: UInt = #line) {
+        sut.insert(term) { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertNil(error, file: file, line: line)
+            case .success:
+                break
             }
         }
     }
