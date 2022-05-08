@@ -4,16 +4,7 @@ import XCTest
 final class CoreDataImageSearchStoreTests: XCTestCase {
 
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = makeSUT()
-        
-        sut.retrieve { result in
-            switch result {
-            case .success(let terms):
-                XCTAssertEqual(terms, [])
-            case .failure(let error):
-                XCTFail("Expected to retrieve empty terms, got \(error) instead")
-            }
-        }
+        expectToRetrieve(makeSUT(), expectedResult: [])
     }
     
     func test_insert_searchTerm() {
