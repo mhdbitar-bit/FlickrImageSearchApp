@@ -24,6 +24,13 @@ final class PhotoListViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.collectionView.numberOfItems(inSection: 0), 0)
     }
     
+    func test_displayingTitle() {
+        let sut = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, "Photos")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> PhotoListViewController {
