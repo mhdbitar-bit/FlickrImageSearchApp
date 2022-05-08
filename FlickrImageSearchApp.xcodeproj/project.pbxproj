@@ -115,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C3317282827B3FF0029AA97 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C3317262827AFD60029AA97 /* URLProtocolStub.swift */,
+				4C3317222826F67A0029AA97 /* SharedTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4C7B0AE62823D34000C47E5F = {
 			isa = PBXGroup;
 			children = (
@@ -155,12 +164,11 @@
 		4C7B0B082823D34100C47E5F /* FlickrImageSearchAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C3317282827B3FF0029AA97 /* Helpers */,
 				4C33171B2826B1790029AA97 /* SceneDelegateTests.swift */,
 				4C33171D2826E9160029AA97 /* FlickrEndpointTests.swift */,
 				4C33171F2826F4D40029AA97 /* FlickrMapperTests.swift */,
-				4C3317222826F67A0029AA97 /* SharedTestHelpers.swift */,
 				4C3317242827AF850029AA97 /* HTTPClientTests.swift */,
-				4C3317262827AFD60029AA97 /* URLProtocolStub.swift */,
 			);
 			path = FlickrImageSearchAppTests;
 			sourceTree = "<group>";

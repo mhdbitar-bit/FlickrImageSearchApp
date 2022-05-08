@@ -15,7 +15,7 @@ final class FlickrMapperTests: XCTestCase {
     }
     
     func test_map_throwsErrorOn200HTTPResponseWithInvalidJSON() throws {
-        let invalidJSON = Data("invalid json".utf8)
+        let invalidJSON = anyData()
         
         XCTAssertThrowsError(
             try FlickrMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: 200))
@@ -49,6 +49,8 @@ final class FlickrMapperTests: XCTestCase {
         let result = try FlickrMapper.map(json, from: HTTPURLResponse(statusCode: 200))
         XCTAssertEqual(result, flickr)
     }
+    
+    // MARK: - Helpers
     
     private func makeJson(_ photos: [String: Any]) -> Data {
         let json = ["photos": photos]
