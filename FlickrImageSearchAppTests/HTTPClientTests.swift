@@ -21,6 +21,33 @@ final class HTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_performGETRequestWithURLWithSuccessResponse() {
+        let data = Data("any data".utf8)
+        let response = HTTPURLResponse(statusCode: 200)
+        let exp = expectation(description: "Wait for request")
+        
+        URLProtocolStub.requestHandler = { _ in
+            return (response, data)
+        }
+        
+        makeSUT().getRquest(from: anyURL()) { result in
+            switch result {
+            case .success(let vales):
+                XCTAssertEqual(vales.data, data)
+                XCTAssertEqual(vales.response.url, response.url)
+                XCTAssertEqual(vales.response.statusCode, response.statusCode)
+                
+            case .failure(let error):
+                XCTFail("Error was not expected: \(error)")
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    
     private func makeSUT() -> HTTPClient {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]
