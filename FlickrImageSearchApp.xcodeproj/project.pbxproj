@@ -176,8 +176,8 @@
 				4C33171D2826E9160029AA97 /* FlickrEndpointTests.swift */,
 				4C33171F2826F4D40029AA97 /* FlickrMapperTests.swift */,
 				4C3317242827AF850029AA97 /* HTTPClientTests.swift */,
-				4C3317292827B6800029AA97 /* PhotoListViewControllerTests.swift */,
 				4C33172B2827BA150029AA97 /* CoreDataImageSearchStoreTests.swift */,
+				4C3317292827B6800029AA97 /* PhotoListViewControllerTests.swift */,
 			);
 			path = FlickrImageSearchAppTests;
 			sourceTree = "<group>";
