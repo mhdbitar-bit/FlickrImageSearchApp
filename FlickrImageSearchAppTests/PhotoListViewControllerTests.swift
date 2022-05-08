@@ -21,7 +21,7 @@ final class PhotoListViewControllerTests: XCTestCase {
         let sut = makeSUT()
         sut.loadViewIfNeeded()
         
-        XCTAssertEqual(sut.collectionView.numberOfItems(inSection: 0), 0)
+        XCTAssertEqual(sut.collectionView.numberOfItems(inSection: 0), 0, "Expected number of items is equal to zero")
     }
     
     func test_displayingTitle() {
