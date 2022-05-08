@@ -1,7 +1,7 @@
 @testable import FlickrImageSearchApp
 import XCTest
 
-final class URLSessionHTTPClientTests: XCTestCase {
+final class HTTPClientTests: XCTestCase {
     
     var urlSession: URLSession!
     
@@ -16,14 +16,15 @@ final class URLSessionHTTPClientTests: XCTestCase {
             return (HTTPURLResponse(), Data("any data".utf8))
         }
         
+        makeSUT().getRquest(from: anyURL(), completion: { _ in })
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func makeSUT() -> HTTPClient {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        
-        let sut = URLSessionHTTPClient(session: session)
-        
-        sut.getRquest(from: anyURL(), completion: { _ in })
-        
-        wait(for: [exp], timeout: 1.0)
+        return URLSessionHTTPClient(session: session)
     }
 }
