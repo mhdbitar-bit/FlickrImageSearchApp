@@ -9,6 +9,14 @@ final class PhotoListViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView)
     }
     
+    func test_configureCollectionView() {
+        let sut = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNotNil(sut.collectionView.delegate, "Expeted CollectionViewDelegate to be not nil")
+        XCTAssertNotNil(sut.collectionView.dataSource, "Expeted CollectionDataSrouce to be not nil")
+    }
+    
     // MARK: - Helpers
     
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> PhotoListViewController {
