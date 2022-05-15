@@ -13,6 +13,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     
     func configure(with photo: Photo, imageService: ImageDataService, operation: Operations) {
         self.photo.image = UIImage(systemName: "photo.fill")
+        self.photo.contentMode = .scaleAspectFit
         imageService.loadImageData(from: photo.url) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -22,6 +23,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
                         switch result {
                         case .success(let imageData):
                             self.photo.image = UIImage(data: imageData)
+                            self.photo.contentMode = .scaleToFill
                         default: break
                         }
                     }

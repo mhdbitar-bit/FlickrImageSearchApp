@@ -20,15 +20,15 @@
                         <rect key="frame" x="5" y="5" width="169" height="169"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hcv-m1-1Bp">
-                                <rect key="frame" x="20" y="21" width="129" height="126.5"/>
+                                <rect key="frame" x="0.0" y="1" width="169" height="166.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hcv-m1-1Bp" firstAttribute="top" secondItem="oHF-zI-v6f" secondAttribute="top" constant="20" id="JzA-5a-7VT"/>
-                            <constraint firstAttribute="bottom" secondItem="hcv-m1-1Bp" secondAttribute="bottom" constant="20" id="Knv-sc-2eQ"/>
-                            <constraint firstItem="hcv-m1-1Bp" firstAttribute="leading" secondItem="oHF-zI-v6f" secondAttribute="leading" constant="20" id="jTG-pt-Txm"/>
-                            <constraint firstAttribute="trailing" secondItem="hcv-m1-1Bp" secondAttribute="trailing" constant="20" id="xeM-k6-NdP"/>
+                            <constraint firstItem="hcv-m1-1Bp" firstAttribute="top" secondItem="oHF-zI-v6f" secondAttribute="top" id="JzA-5a-7VT"/>
+                            <constraint firstAttribute="bottom" secondItem="hcv-m1-1Bp" secondAttribute="bottom" id="Knv-sc-2eQ"/>
+                            <constraint firstItem="hcv-m1-1Bp" firstAttribute="leading" secondItem="oHF-zI-v6f" secondAttribute="leading" id="jTG-pt-Txm"/>
+                            <constraint firstAttribute="trailing" secondItem="hcv-m1-1Bp" secondAttribute="trailing" id="xeM-k6-NdP"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
