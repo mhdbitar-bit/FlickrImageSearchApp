@@ -6,5 +6,5 @@
 
 I tried to apply clean code with architecture in mind to decrease the coupling between modules 
 
-* I applied **MVVM** pattern from the presentation layer
+* I applied **MVVM** pattern inside the presentation layer
 * you can run all the tests by pressing ⌘ + U
