@@ -27,8 +27,12 @@ final class SearchKeywordListTableViewController: UITableViewController, Alertab
         super.viewDidLoad()
         
         self.title = viewModel.title
-        viewModel.load()
         bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.load()
     }
     
     private func bind() {
